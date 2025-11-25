@@ -5,96 +5,218 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cozke Enterprise - Account Management Services</title>
   <link rel="icon" href="logo.png">
-  <meta name="description" content="Account management services for Amazon, Meesho, Flipkart, Myntra, Ajio, Nykaa. Seller registration, catalog management, PPC campaigns, and more.">
+  <meta name="description" content="Account management services for Amazon, Meesho, Flipkart, Myntra, Ajio, Nykaa. Seller registration, catalog management, PPC campaigns, pricing, and privacy policy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-bg: #14173a;
+      --main-bg: #151929;
+      --darker-bg: #121424;
+      --light-bg: #242744;
       --gold: #e0c17b;
+      --gold-glow: #ffe2a050;
       --white: #fff;
-      --text-gray: #e4e4e4;
-      --card-bg: #20234d;
-      --hover: #36397e;
+      --gray: #b9bad1;
+      --text-gray: #d8d9e6;
+      --accent: #333659;
+      --card-shadow: 0 6px 24px #000c 0px;
     }
     body {
       margin: 0;
       background: var(--main-bg);
-      color: var(--white);
-      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-      line-height: 1.5;
+      color: var(--text-gray);
+      font-family: 'Montserrat', Arial, sans-serif;
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 30px 16px 0 16px;
+    nav {
+      width: 100%;
+      background: var(--darker-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 8px #0006;
     }
-    header {
+    .nav-wrap {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      padding: 8px 4vw;
+    }
+    .nav-logo {
+      height: 52px;
+      margin-right: 18px;
+    }
+    .nav-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 1.32em;
+      color: var(--gold);
+    }
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 2vw;
+    }
+    .nav-links a {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: .5px;
+      transition: color .12s;
+      font-size: 1.04em;
+      padding: 6px 2px;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* Hero Section */
+    .hero {
       text-align: center;
-      margin-bottom: 32px;
+      padding: 56px 12px 22px 12px;
+      background: linear-gradient(150deg, var(--main-bg) 75%, var(--gold-glow) 100%);
     }
-    .logo {
-      width: 280px;
-      max-width: 90vw;
+    .hero-logo {
+      width: 250px; max-width: 92vw; filter: drop-shadow(0 1px 9px #0008);
     }
-    h1 {
-      font-size: 2.2em;
-      margin: 24px 0 10px 0;
-      font-family: 'Georgia', serif;
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.28em;
       color: var(--gold);
       letter-spacing: 2px;
+      margin: 22px 0 10px 0;
     }
-    .subtitle {
-      font-size: 1.07em;
+    .hero-desc {
+      font-size: 1.16em;
       margin-bottom: 8px;
-      color: var(--text-gray);
+      color: var(--gray);
     }
-    .tagline {
-      font-size: 1.12em;
-      margin-bottom: 25px;
-      font-weight: 500;
+    .hero-tagline {
+      font-size: 1.16em;
+      margin-bottom: 26px;
       color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 1.3px;
     }
-    .services {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 26px 18px 18px 18px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 12px 0 rgba(20,23,58, 0.14);
+    /* Service Cards */
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 44px 4vw 22px 4vw;
     }
-    .services h2 {
+    .section-title {
+      font-family: 'Playfair Display', serif;
       color: var(--gold);
-      margin-top: 0;
-      font-size: 1.5em;
+      font-size: 1.6em;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 35px;
     }
-    .service-list {
-      list-style-type: none;
-      padding-left: 0;
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
     }
-    .service-list li {
-      margin-bottom: 18px;
-      padding-bottom: 9px;
-      border-bottom: 1px solid #282b54;
+    .service-card {
+      background: var(--light-bg);
+      border-radius: 13px;
+      box-shadow: var(--card-shadow);
+      padding: 28px 22px 20px 22px;
+      margin-bottom: 0;
+      position: relative;
+      transition: box-shadow .17s, transform .13s;
+      border: 1.5px solid #37395970;
     }
-    .service-list li:last-child {
-      border-bottom: none;
+    .service-card:hover {
+      box-shadow: 0 8px 36px #000a 1px;
+      z-index: 2;
+      transform: translateY(-4px) scale(1.017);
+      border-color: var(--gold);
     }
     .service-title {
       color: var(--gold);
-      font-weight: 600;
-      font-size: 1.06em;
+      font-size: 1.09em;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
+    .service-desc {
+      color: var(--gray);
+      font-size: 1em;
+      margin-bottom: 0;
+    }
+    /* Pricing */
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .price-card {
+      background: var(--darker-bg);
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      flex: 1 1 240px;
+      max-width: 315px;
+      min-width: 235px;
+      padding: 30px 22px 22px 22px;
+      text-align: center;
+      border: 1.5px solid #383a5e58;
+      position: relative;
+    }
+    .price-card.recommended {
+      border-color: var(--gold);
+      background: linear-gradient(117deg, var(--main-bg) 80%, var(--gold-glow) 120%);
+    }
+    .price-title {
+      font-size: 1.18em;
+      color: var(--gold);
+      margin-bottom: 7px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .price-fee {
+      font-size: 2.0em;
+      margin: 17px 0 5px 0;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .price-desc {
+      font-size: 1.03em;
+      color: var(--gray);
+      margin-bottom: 18px;
+      min-height: 54px;
+    }
+    .price-duration {
+      font-size: .98em;
+      margin-bottom: 14px;
+      color: var(--gray);
+      letter-spacing: .3px;
+    }
+    .price-free {
+      color: #7cfd93;
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 15px 0 5px 0;
+    }
+    /* Contact */
     .contact-section {
       text-align: center;
-      padding: 18px 0 14px 0;
-      background: var(--main-bg);
-      border-radius: 8px;
+      padding: 34px 0 14px 0;
+      background: var(--darker-bg);
+      border-radius: 11px;
+      box-shadow: var(--card-shadow);
+      margin-top: 35px;
     }
     .contact-title {
-      font-size: 1.23em;
-      margin-bottom: 12px;
+      font-size: 1.25em;
+      margin-bottom: 15px;
       color: var(--gold);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: .5px;
     }
     .contact-links {
       display: flex;
@@ -106,19 +228,20 @@
     .icon-link {
       display: flex;
       align-items: center;
-      color: var(--white);
+      color: var(--text-gray);
       text-decoration: none;
-      font-size: 1.13em;
-      padding: 7px 10px;
+      font-size: 1.12em;
+      padding: 8px 10px;
       border-radius: 6px;
       transition: background 0.16s, color 0.16s;
       background: none;
       border: none;
       cursor: pointer;
+      font-weight: 500;
     }
     .icon-link:hover,
     .icon-link:focus {
-      background: var(--card-bg);
+      background: var(--light-bg);
       color: var(--gold);
     }
     .svg-icon {
@@ -134,165 +257,266 @@
       margin: 0 auto 6px;
       font-size: 1.03em;
       color: #bbbbbb;
+      letter-spacing: .3px;
     }
     .platforms {
-      margin: 22px auto 0 auto;
+      margin: 30px auto 0 auto;
       text-align: center;
-      font-size: 1.04em;
+      font-size: 1.07em;
       color: #bababa;
     }
+
+    /* Privacy Policy & Footer */
+    .policy-section {
+      background: var(--darker-bg);
+      color: var(--text-gray);
+      margin: 40px auto 0 auto;
+      padding: 34px 2vw 30px 2vw;
+      border-radius: 13px;
+      max-width: 1000px;
+      box-shadow: var(--card-shadow);
+      font-size: 1em;
+      line-height: 1.73;
+    }
+    .policy-section h2 {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 1.15em;
+    }
+    .policy-section h3 {
+      color: var(--gold);
+      margin-top: 30px;
+      font-size: 1.06em;
+      margin-bottom: 7px;
+      font-family: inherit;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px 0px 18px 0px;
+      background: var(--main-bg);
+      color: #aa9d74;
+      font-size: .99em;
+      font-family: 'Montserrat',sans-serif;
+      letter-spacing: .3px;
+      margin-top: 24px;
+      border-top: 1px solid #57595b1c;
+    }
+    .footer a {
+      color: var(--gold);
+      text-decoration: underline;
+      margin-left: 15px;
+      font-size: .97em;
+    }
+    /* Responsive */
+    @media (max-width:950px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .nav-wrap { flex-direction: column; align-items: flex-start; }
+      .nav-title { margin-bottom: 10px; }
+    }
     @media (max-width:600px) {
-      .container { padding: 12px 4vw 0 4vw; }
-      .services { padding: 12px 4vw;}
-      .service-title { font-size: 1.01em;}
-      .logo { width: 96vw; max-width: 96vw;}
-      h1 { font-size: 1.19em;}
-      .contact-links { gap: 16px; font-size: 0.98em;}
-      .svg-icon { width: 23px; height: 23px;}
+      .hero-logo { width: 98vw; }
+      .section { padding: 26px 2vw 12px 2vw;}
+      .policy-section { padding: 24px 4vw 17px 4vw; font-size: .97em;}
+      .contact-links { gap:16px;}
+      .price-card { min-width: 98vw; max-width: 98vw;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="logo.png" alt="Cozke Enterprise Logo" class="logo">
-      <h1>Cozke Enterprise</h1>
-      <div class="subtitle">
-        Account Management Services – Amazon, Meesho, Flipkart, Myntra, Ajio, Nykaa
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="nav-wrap">
+      <img src="logo.png" alt="Cozke Enterprise Logo" class="nav-logo">
+      <span class="nav-title">Cozke Enterprise</span>
+      <span class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="#policy">Privacy Policy</a>
+      </span>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <img src="logo.png" alt="Cozke Enterprise Logo" class="hero-logo">
+    <h1 class="hero-title">Cozke Enterprise</h1>
+    <div class="hero-desc">
+      Professional Account Management Services for <b>Amazon, Meesho, Flipkart, Myntra, Ajio, Nykaa</b>
+    </div>
+    <div class="hero-tagline">
+      Accelerate your marketplace growth on India’s top e-commerce platforms.
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="section" id="services">
+    <div class="section-title">Our Services</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">Seller Account Registration</div>
+        <div class="service-desc">End-to-end vendor/seller account registration on all platforms, ensuring a smooth, compliant start with no hassle.</div>
       </div>
-      <div class="tagline">
-        Boost your business across top e-commerce platforms, with the best rates!
+      <div class="service-card">
+        <div class="service-title">Strategic Platform Selection</div>
+        <div class="service-desc">Expert guidance on which marketplaces best suit your products and your growth ambitions.</div>
       </div>
-    </header>
-    <section class="services">
-      <h2>Our Services</h2>
-      <ul class="service-list">
-        <li>
-          <span class="service-title">Seller Account Registration:</span>
-          End-to-end handling of vendor/seller registration on all platforms, ensuring a smooth and compliant setup.
-        </li>
-        <li>
-          <span class="service-title">Strategic Platform Selection:</span>
-          Guidance on which marketplaces (Amazon, Flipkart, etc.) are best for your product category and target audience.
-        </li>
-        <li>
-          <span class="service-title">Catalog Creation & Listing Management:</span>
-          Expertly creating and uploading your product catalog with high-quality images, compelling content, and the right keywords.
-        </li>
-        <li>
-          <span class="service-title">Brand Storefront Setup:</span>
-          Designing and building custom-branded storefronts on Amazon (Stores), Flipkart (Brand Pages), etc., to enhance brand identity.
-        </li>
-        <li>
-          <span class="service-title">A+ Content / Brand Story Setup:</span>
-          Leveraging enhanced content modules on Amazon and Flipkart to dramatically improve conversion rates.
-        </li>
-        <li>
-          <span class="service-title">Product Listing Optimization:</span>
-          Crafting SEO-friendly titles, bullet points, and descriptions using high-volume keywords specific to each platform.
-        </li>
-        <li>
-          <span class="service-title">Enhanced Content Management:</span>
-          Creation and management of A+ Content, Brand Stories, and other rich media to tell your brand's story.
-        </li>
-        <li>
-          <span class="service-title">Catalog Hygiene Audits:</span>
-          Regular audits to fix errors, remove duplicates, and ensure all listings are 100% compliant with marketplace policies.
-        </li>
-        <li>
-          <span class="service-title">PPC Campaign Strategy & Management:</span>
-          Creating and managing Sponsored Product, Brand, and Display campaigns on Amazon & Flipkart.
-        </li>
-        <li>
-          <span class="service-title">Campaign Performance Optimization:</span>
-          Weekly bid and keyword adjustments to maximize Return on Ad Spend (ROAS).
-        </li>
-        <li>
-          <span class="service-title">Deal & Promotion Management:</span>
-          Strategic planning and execution of Lightning Deals, Festival Sales, Coupons, and other platform-specific offers.
-        </li>
-        <li>
-          <span class="service-title">Advertising Performance Reporting:</span>
-          Clear, concise reports showing ad spend, sales generated, and overall ROAS.
-        </li>
-        <li>
-          <span class="service-title">Order Processing Monitoring:</span>
-          Daily oversight of order flow and ensuring timely dispatch.
-        </li>
-        <li>
-          <span class="service-title">Shipping & Fulfillment Coordination:</span>
-          Managing relationships with fulfillment centers (like Amazon FBA) and coordinating with your logistics partners.
-        </li>
-        <li>
-          <span class="service-title">Returns & Refund Management:</span>
-          Efficiently handling customer returns and refund processes as per platform policies.
-        </li>
-        <li>
-          <span class="service-title">Monthly Business Review Reports:</span>
-          Comprehensive reports with insights, growth metrics, and a clear action plan for the next month.
-        </li>
-        <li>
-          <span class="service-title">Q&A Management:</span>
-          Monitoring and responding to customer questions on your product pages promptly.
-        </li>
-        <li>
-          <span class="service-title">Pricing Strategy:</span>
-          Dynamic pricing recommendations based on competition, demand, and platform algorithms.
-        </li>
-        <li>
-          <span class="service-title">New Product Launch Strategy:</span>
-          End-to-end planning for launching new products with maximum impact.
-        </li>
-        <li>
-          <span class="service-title">Brand Content Strategy:</span>
-          Developing a holistic plan for your brand's content across all marketplaces.
-        </li>
-      </ul>
-    </section>
+      <div class="service-card">
+        <div class="service-title">Catalog Creation & Listing Management</div>
+        <div class="service-desc">Product catalog creation, skilled content and keyword optimization, bulk/variant listing, and error-free uploads.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Brand Storefront & Enhanced Content</div>
+        <div class="service-desc">Custom-branded storefronts, A+ Content/Brand Story setup, and rich media content to grow conversions and brand equity.</div>
+      </div> 
+      <div class="service-card">
+        <div class="service-title">Campaign & Deal Management</div>
+        <div class="service-desc">Platform-specific deals/promotions, Sponsored Ads, campaign strategy and weekly optimization to maximize your ROAS.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Listing Audits & Compliance</div>
+        <div class="service-desc">Catalog hygiene audits, duplicate fixes, compliance checks, and periodic reporting to keep your brand protected.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Order, Shipping & Fulfillment</div>
+        <div class="service-desc">Order processing, dispatch monitoring, working with fulfillment centers (like FBA), refund and returns handling, Q&amp;A response.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Brand Content & Launch Strategy</div>
+        <div class="service-desc">Content and pricing strategy, new product launch planning, category intelligence, content scheduling, and holistic account growth planning.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section class="section" id="pricing">
+    <div class="section-title">Pricing Plans</div>
+    <div class="pricing-cards">
+
+      <div class="price-card">
+        <div class="price-title">Account Overview</div>
+        <div class="price-free">Free</div>
+        <div class="price-desc">Get a free basic overview of your e-commerce account with no obligation. Ideal for understanding improvement areas and potential.</div>
+        <div class="price-duration">For all platforms</div>
+      </div>
+
+      <div class="price-card recommended">
+        <div class="price-title">Amazon, Myntra, Ajio, Nykaa</div>
+        <div class="price-fee">&#8377;5,000 <span style="font-size:.55em;font-weight:400;">/month</span></div>
+        <div class="price-duration">1 Month Plan</div>
+        <div class="price-fee" style="font-size:1.34em;color:#bda052;margin-top:17px;">&#8377;4,000 <span style="font-size:.5em;font-weight:400;">/month<sup>3mo</sup></span></div>
+        <div class="price-duration">3 Month Plan</div>
+        <div class="price-desc">
+          Full-service account management including listings, campaigns, optimization, reporting and more.
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-title">Flipkart, Meesho &amp; Others</div>
+        <div class="price-fee">&#8377;4,000 <span style="font-size:.55em;font-weight:400;">/month</span></div>
+        <div class="price-duration">1 Month Plan</div>
+        <div class="price-fee" style="font-size:1.34em;color:#bda052;margin-top:17px;">&#8377;3,000 <span style="font-size:.5em;font-weight:400;">/month<sup>3mo</sup></span></div>
+        <div class="price-duration">3 Month Plan</div>
+        <div class="price-desc">
+          Full-service account management for Flipkart, Meesho and other e-commerce platforms.
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;color:#9D9EAA; font-size:.97em; margin-top:22px;">
+      <b>Note:</b> No hidden fees. Please <a href="#contact" style="color:var(--gold);">contact us</a> for a custom quote or long-term plans.
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section contact-section" id="contact">
+    <div class="contact-title">Contact Us</div>
+    <div class="contact-links">
+      <!-- WhatsApp -->
+      <a class="icon-link" href="https://wa.me/919825044250" target="_blank" rel="noopener" title="Chat on WhatsApp">
+        <span class="svg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.019-.458.13-.606.134-.133.298-.347.447-.52.15-.173.199-.298.298-.497.099-.198.05-.372-.025-.521-.076-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.521.075-.792.373-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.073.149.198 2.098 3.203 5.077 4.36.71.244 1.263.389 1.697.498.713.18 1.361.154 1.872.093.571-.07 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.412-.075-.123-.272-.198-.57-.347m-5.421 5.433h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.1 11.453c0-5.45 4.436-9.877 9.893-9.877 2.64 0 5.122 1.03 6.988 2.899a9.825 9.825 0 012.889 6.976c-.003 5.452-4.437 9.88-9.893 9.88M20.13 3.868C18.005 1.746 15.11.615 12.017.615 5.648.615.424 5.83.427 11.453c0 2.021.527 3.997 1.527 5.726L.049 23.617a.998.998 0 00.251 1.038.99.99 0 00.704.293c.11 0 .221-.018.33-.053l6.039-1.523A10.6 10.6 0 0012.016 22.3c6.374 0 11.554-5.183 11.556-11.556a11.5 11.5 0 00-3.442-6.876"/></svg>
+        </span>
+        <span>+91 9825044250</span>
+      </a>
+      <!-- Gmail -->
+      <a class="icon-link" href="mailto:cozke.ecom@gmail.com" title="Email">
+        <span class="svg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 13.065L1.99 6.553C1.983 6.581 1.98 6.61 1.98 6.638v10.723c0 .755.613 1.369 1.367 1.369h17.301c.753 0 1.367-.614 1.367-1.369V6.638c0-.027-.002-.057-.008-.084L12 13.065zm10.13-7.32c-.041-.028-.084-.049-.129-.068-.016-.007-.03-.017-.046-.023a1.36 1.36 0 00-.449-.086H2.527c-.154 0-.303.031-.441.086-.017.006-.031.016-.047.023-.045.02-.087.041-.128.068a1.366 1.366 0 00-.531 1.091c0 .441.224.847.624 1.083l8.997 5.817a.677.677 0 00.721 0l8.998-5.816a1.313 1.313 0 00.621-1.062 1.37 1.37 0 00-.541-1.12z"/>
+          </svg>
+        </span>
+        <span>Email Us</span>
+      </a>
+      <!-- Instagram -->
+      <a class="icon-link" href="https://www.instagram.com/cozkeenterprise?igsh=MXNqZG9vM2R5YTZnbg==" target="_blank" rel="noopener" title="Instagram">
+        <span class="svg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12.004 3.729c2.076 0 2.32.008 3.137.045.814.037 1.277.17 1.577.287.396.153.68.336.977.633.296.297.48.581.633.977.117.3.25.763.287 1.577.037.818.045 1.061.045 3.137s-.008 2.32-.045 3.137c-.037.814-.17 1.277-.287 1.577a2.34 2.34 0 01-.633.977 2.338 2.338 0 01-.977.633c-.3.117-.763.25-1.577.287-.818.037-1.061.045-3.137.045s-2.32-.008-3.137-.045c-.814-.037-1.277-.17-1.577-.287a2.347 2.347 0 01-.977-.633 2.347 2.347 0 01-.633-.977c-.117-.3-.25-.763-.287-1.577C2.738 14.32 2.73 14.076 2.73 12s.008-2.32.045-3.137c.037-.814.17-1.277.287-1.577.153-.396.336-.68.633-.977.297-.296.581-.48.977-.633.3-.117.763-.25 1.577-.287C9.684 3.737 9.927 3.729 12.004 3.729m0-1.729C9.884 2 9.621 2.008 8.797 2.045c-.881.039-1.489.176-2.02.377a4.072 4.072 0 00-1.493.868 4.082 4.082 0 00-.868 1.493c-.201.531-.338 1.139-.377 2.02C2.008 9.621 2 9.884 2 12c0 2.116.008 2.38.045 3.203.039.881.176 1.489.377 2.02.179.474.441.91.868 1.493a4.082 4.082 0 001.493.868c.531.201 1.139.338 2.02.377.823.037 1.087.045 3.203.045s2.38-.008 3.203-.045c.881-.039 1.489-.176 2.02-.377a4.059 4.059 0 001.493-.868 4.059 4.059 0 00.868-1.493c.201-.531.338-1.139.377-2.02.037-.823.045-1.087.045-3.203s-.008-2.38-.045-3.203c-.039-.881-.176-1.489-.377-2.02a4.072 4.072 0 00-.868-1.493 4.072 4.072 0 00-1.493-.868c-.531-.201-1.139-.338-2.02-.377C14.38 2.008 14.117 2 12.004 2zm0 4.637a5.362 5.362 0 015.363 5.363A5.362 5.362 0 0112.004 17.36a5.362 5.362 0 01-5.363-5.36A5.362 5.362 0 0112.004 6.637zm0 1.663a3.7 3.7 0 100 7.401 3.7 3.7 0 000-7.401zm6.375-2.133a1.256 1.256 0 11-2.511 0 1.256 1.256 0 012.511 0z"/>
+          </svg>
+        </span>
+        <span>Instagram</span>
+      </a>
+    </div>
+    <div class="email-list">
+      cozke.ecom@gmail.com &nbsp;|&nbsp; cozkeenterprise@gmail.com
+    </div>
+    <div style="margin-top:9px; font-size:0.96em; color:#aaa;">
+      Click <b>WhatsApp</b> icon or your number for direct enquiry.<br>
+      Follow us: <a href="https://www.instagram.com/cozkeenterprise?igsh=MXNqZG9vM2R5YTZnbg==" style="color:var(--gold);">Instagram</a>
+    </div>
     <div class="platforms">
       <strong>We manage accounts on:</strong>
       <span>Amazon, Meesho, Flipkart, Myntra, Ajio, Nykaa</span>
     </div>
-    <section class="contact-section" id="contact">
-      <div class="contact-title">Contact Us</div>
-      <div class="contact-links">
-        <!-- WhatsApp -->
-        <a class="icon-link" href="https://wa.me/919825044250" target="_blank" rel="noopener" title="Chat on WhatsApp">
-          <span class="svg-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.298-.019-.458.13-.606.134-.133.298-.347.447-.52.15-.173.199-.298.298-.497.099-.198.05-.372-.025-.521-.076-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.521.075-.792.373-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.073.149.198 2.098 3.203 5.077 4.36.71.244 1.263.389 1.697.498.713.18 1.361.154 1.872.093.571-.07 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.412-.075-.123-.272-.198-.57-.347m-5.421 5.433h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.1 11.453c0-5.45 4.436-9.877 9.893-9.877 2.64 0 5.122 1.03 6.988 2.899a9.825 9.825 0 012.889 6.976c-.003 5.452-4.437 9.88-9.893 9.88M20.13 3.868C18.005 1.746 15.11.615 12.017.615 5.648.615.424 5.83.427 11.453c0 2.021.527 3.997 1.527 5.726L.049 23.617a.998.998 0 00.251 1.038.99.99 0 00.704.293c.11 0 .221-.018.33-.053l6.039-1.523A10.6 10.6 0 0012.016 22.3c6.374 0 11.554-5.183 11.556-11.556a11.5 11.5 0 00-3.442-6.876"/></svg>
-          </span>
-          <span>+91 9825044250</span>
-        </a>
-        <!-- Gmail -->
-        <a class="icon-link" href="mailto:cozke.ecom@gmail.com" title="Email">
-          <span class="svg-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 13.065L1.99 6.553C1.983 6.581 1.98 6.61 1.98 6.638v10.723c0 .755.613 1.369 1.367 1.369h17.301c.753 0 1.367-.614 1.367-1.369V6.638c0-.027-.002-.057-.008-.084L12 13.065zm10.13-7.32c-.041-.028-.084-.049-.129-.068-.016-.007-.03-.017-.046-.023a1.36 1.36 0 00-.449-.086H2.527c-.154 0-.303.031-.441.086-.017.006-.031.016-.047.023-.045.02-.087.041-.128.068a1.366 1.366 0 00-.531 1.091c0 .441.224.847.624 1.083l8.997 5.817a.677.677 0 00.721 0l8.998-5.816a1.313 1.313 0 00.621-1.062 1.37 1.37 0 00-.541-1.12z"/>
-            </svg>
-          </span>
-          <span>Email Us</span>
-        </a>
-        <!-- Instagram -->
-        <a class="icon-link" href="https://www.instagram.com/cozkeenterprise?igsh=MXNqZG9vM2R5YTZnbg==" target="_blank" rel="noopener" title="Instagram">
-          <span class="svg-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M12.004 3.729c2.076 0 2.32.008 3.137.045.814.037 1.277.17 1.577.287.396.153.68.336.977.633.296.297.48.581.633.977.117.3.25.763.287 1.577.037.818.045 1.061.045 3.137s-.008 2.32-.045 3.137c-.037.814-.17 1.277-.287 1.577a2.34 2.34 0 01-.633.977 2.338 2.338 0 01-.977.633c-.3.117-.763.25-1.577.287-.818.037-1.061.045-3.137.045s-2.32-.008-3.137-.045c-.814-.037-1.277-.17-1.577-.287a2.347 2.347 0 01-.977-.633 2.347 2.347 0 01-.633-.977c-.117-.3-.25-.763-.287-1.577C2.738 14.32 2.73 14.076 2.73 12s.008-2.32.045-3.137c.037-.814.17-1.277.287-1.577.153-.396.336-.68.633-.977.297-.296.581-.48.977-.633.3-.117.763-.25 1.577-.287C9.684 3.737 9.927 3.729 12.004 3.729m0-1.729C9.884 2 9.621 2.008 8.797 2.045c-.881.039-1.489.176-2.02.377a4.072 4.072 0 00-1.493.868 4.082 4.082 0 00-.868 1.493c-.201.531-.338 1.139-.377 2.02C2.008 9.621 2 9.884 2 12c0 2.116.008 2.38.045 3.203.039.881.176 1.489.377 2.02.179.474.441.91.868 1.493a4.082 4.082 0 001.493.868c.531.201 1.139.338 2.02.377.823.037 1.087.045 3.203.045s2.38-.008 3.203-.045c.881-.039 1.489-.176 2.02-.377a4.059 4.059 0 001.493-.868 4.059 4.059 0 00.868-1.493c.201-.531.338-1.139.377-2.02.037-.823.045-1.087.045-3.203s-.008-2.38-.045-3.203c-.039-.881-.176-1.489-.377-2.02a4.072 4.072 0 00-.868-1.493 4.072 4.072 0 00-1.493-.868c-.531-.201-1.139-.338-2.02-.377C14.38 2.008 14.117 2 12.004 2zm0 4.637a5.362 5.362 0 015.363 5.363A5.362 5.362 0 0112.004 17.36a5.362 5.362 0 01-5.363-5.36A5.362 5.362 0 0112.004 6.637zm0 1.663a3.7 3.7 0 100 7.401 3.7 3.7 0 000-7.401zm6.375-2.133a1.256 1.256 0 11-2.511 0 1.256 1.256 0 012.511 0z"/>
-            </svg>
-          </span>
-          <span>Instagram</span>
-        </a>
-      </div>
-      <div class="email-list">
-        cozke.ecom@gmail.com &nbsp;|&nbsp; cozkeenterprise@gmail.com
-      </div>
-      <div style="margin-top:9px; font-size:0.9em; color:#aaa;">
-        Click <b>WhatsApp</b> icon or your number for direct enquiry.<br>
-        Follow us: <a href="https://www.instagram.com/cozkeenterprise?igsh=MXNqZG9vM2R5YTZnbg==" style="color:var(--gold);" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </section>
-    <footer style="text-align:center; padding: 18px 0; color:#aa9d74; font-size: 0.96em;">
-      &copy; 2025 Cozke Enterprise. All rights reserved.
-    </footer>
-  </div>
+  </section>
+
+  <!-- PRIVACY POLICY SECTION -->
+  <section class="policy-section" id="policy">
+    <h2>Privacy Policy</h2>
+    <p>
+      At Cozke Enterprise, we are committed to protecting the privacy and security of our customers, in full compliance with Amazon’s Data Protection Policies (DPP) and applicable regional regulations. This policy describes how we collect, use, store, protect, share, and delete your information.
+    </p>
+    <h3>Data We Collect</h3>
+    <ul>
+      <li>Contact information (name, email, phone number) provided by you.</li>
+      <li>Marketplace seller account details required for account management.</li>
+      <li>Information needed to provide our services, such as product data, campaign performance, sales data (only as necessary).</li>
+    </ul>
+    <h3>Use of Data</h3>
+    <ul>
+      <li>To deliver, optimize and report on account management services for your selected platforms.</li>
+      <li>To provide support and communicate with you.</li>
+      <li>No personal data is sold or used for any third-party marketing purposes.</li>
+    </ul>
+    <h3>Data Storage & Protection</h3>
+    <ul>
+      <li>All collected data is stored securely following industry standards and Amazon’s DPP requirements.</li>
+      <li>Only authorized personnel can access client data for service delivery.</li>
+    </ul>
+    <h3>Data Sharing</h3>
+    <ul>
+      <li>We may share information with marketplace platforms, but only as required for account operations or compliance.</li>
+      <li>No data is shared with external parties unless required by law or by explicit client instruction.</li>
+    </ul>
+    <h3>Data Deletion</h3>
+    <ul>
+      <li>Upon request or at the end of the service relationship, your account data will be permanently deleted from our systems within 30 days, except where retention is required for legal/compliance reasons.</li>
+    </ul>
+    <h3>Compliance</h3>
+    <ul>
+      <li>Cozke Enterprise complies with Amazon’s Data Protection Policies (DPP), Indian IT Act, and any other applicable regulations.</li>
+      <li>Clients are encouraged to review both Amazon’s and local laws applicable to seller account data.</li>
+    </ul>
+    <h3>Contact for Privacy Matters</h3>
+    <p>
+      For privacy inquiries, data access, or deletion requests, please email: <a href="mailto:cozke.ecom@gmail.com" style="color:var(--gold)">cozke.ecom@gmail.com</a>
+    </p>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Cozke Enterprise. All rights reserved.
+    <a href="#policy">Privacy Policy</a>
+  </footer>
 </body>
 </html>
